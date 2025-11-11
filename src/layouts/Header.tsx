@@ -14,7 +14,6 @@ function Header({ isDark, setIsDark}: HeaderProps) {
 
     const textRef = useRef<HTMLDivElement>(null);
 
-    
     useEffect(() => {
         if (!textRef.current) return;
       
