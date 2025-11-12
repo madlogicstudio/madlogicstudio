@@ -1,6 +1,8 @@
 import { useState } from "react"
 import Header from "../layouts/Header";
-import Content from "./Content";
+import About from "../layouts/About";
+import Showcase from "../layouts/Showcase";
+import Footer from "../layouts/Footer";
 
 function Landing() {
 
@@ -9,7 +11,10 @@ function Landing() {
     return (
         <div className="w-full h-auto flex flex-col items-center justify-start">
             <Header isDark={isDark} setIsDark={setIsDark}/>
-            <Content />
+            <div className="h-screen"></div>
+            <About isDark={isDark}/>
+            <Showcase isDark={isDark}/>
+            <Footer isDark={isDark}/>   
         </div>
     )
 }
