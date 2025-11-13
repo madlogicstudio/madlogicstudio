@@ -65,6 +65,40 @@ function Header({ isDark, setIsDark}: HeaderProps) {
           window.scrollTo({ top: sectionTop, behavior: "smooth" });
         }
     };  
+    const gotoServices = () => {
+        const section = document.getElementById("services");
+        if (!section) return;
+      
+        const headerHeight = window.innerHeight;
+      
+        if (window.ScrollSmoother) {
+          window.ScrollSmoother.scrollTo(section, {
+            offsetY: -headerHeight,
+            duration: 1.2,
+            ease: "power2.out"
+          });
+        } else {
+          const sectionTop = section.getBoundingClientRect().top + window.scrollY - headerHeight;
+          window.scrollTo({ top: sectionTop, behavior: "smooth" });
+        }
+    };  
+    const gotoWork = () => {
+        const section = document.getElementById("work");
+        if (!section) return;
+      
+        const headerHeight = window.innerHeight;
+      
+        if (window.ScrollSmoother) {
+          window.ScrollSmoother.scrollTo(section, {
+            offsetY: -headerHeight,
+            duration: 1.2,
+            ease: "power2.out"
+          });
+        } else {
+          const sectionTop = section.getBoundingClientRect().top + window.scrollY - headerHeight;
+          window.scrollTo({ top: sectionTop, behavior: "smooth" });
+        }
+    };  
       
     return (
         <div id="header" className={`fixed top-0 left-0 h-screen w-full flex flex-row items-start justify-center`}>
@@ -76,10 +110,12 @@ function Header({ isDark, setIsDark}: HeaderProps) {
                     <img src={Icon} className="h-[calc(2.6vw+2.8rem)] w-[calc(6.4vw+6.6rem)] cursor-pointer" alt="" />
                 </div>
                 <div className="flex-1 z-2 flex flex-row items-center justify-center p-[calc(0.6vw+1.2rem)] gap-[calc(0.4vw+0.6rem)]">
-                    <span title="Skip to Work" className="hovered text-[calc(0.4vw+0.8rem)] font-semibold cursor-pointer">Work</span>
-                    <span title="Skip to Services" className="hovered text-[calc(0.4vw+0.8rem)] font-semibold cursor-pointer">Services</span>
                     <span title="Skip to About" className="hovered text-[calc(0.4vw+0.8rem)] font-semibold cursor-pointer"
                         onClick={gotoAbout}>About</span>
+                    <span title="Skip to Work" className="hovered text-[calc(0.4vw+0.8rem)] font-semibold cursor-pointer"
+                        onClick={gotoWork}>Work</span>
+                    <span title="Skip to Services" className="hovered text-[calc(0.4vw+0.8rem)] font-semibold cursor-pointer"
+                        onClick={gotoServices}>Services</span>
                     <span title="Skip to Github" className="hovered text-[calc(0.4vw+0.8rem)] font-semibold cursor-pointer">Github</span>
                 </div>
                 <div className="flex-1 z-2 flex flex-row items-center justify-end p-[calc(0.4vw+0.6rem)]">
@@ -95,7 +131,7 @@ function Header({ isDark, setIsDark}: HeaderProps) {
                 <div className="gap-[calc(0.4vw+0.6rem)] flex flex-row items-center justify-start">
                     <i title="Skip Page" className="bx bx-sparkle-square bx-spin-hover hovered text-[calc(0.8vw+1.4rem)] cursor-pointer"
                         onClick={handleSkip}></i> 
-                    <span className="spacemono font-bold text-[calc(0.4vw+0.7rem)]">Skip Page</span>
+                    <span className="spacemono font-bold text-[calc(0.4vw+0.7rem)]">What We Offer</span>
                 </div>
                 <div className="gap-[calc(0.4vw+0.6rem)] flex flex-row items-center justify-start">
                     <span className="spacemono font-bold text-[calc(0.4vw+0.7rem)]">Change Theme</span>

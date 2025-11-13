@@ -214,7 +214,7 @@ function Tagline() {
     return (     
         <div className="overflow-hidden absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-1 flex items-center justify-center w-full h-full">
             <div className="relative w-auto w-auto flex flex-row items-center justify-center z-2">
-                <span ref={whereRef} className="flex flex-row items-center justify-end montserrat font-extrabold px-[calc(0.4vw+0.6rem)] py-[calc(0.3vw+0.4rem)]
+                <span ref={whereRef} className="flex flex-row items-center justify-end montserrat font-bold px-[calc(0.4vw+0.6rem)] py-[calc(0.3vw+0.4rem)]
                     text-[calc(1.6vw+2rem)] text-center cursor-pointer"
                     onMouseOver={goDown}
                     onMouseLeave={doNothing}>Where</span>
