@@ -1,4 +1,4 @@
-import Dark from "../assets/vids/dark.mp4"
+import Square from "../assets/vids/square.mp4"
 
 type AboutProps = {
     isDark: boolean;
@@ -30,12 +30,12 @@ function About({ isDark }: AboutProps) {
                 </div>
             </div>
 
-            <div className={`relative ${isDark? "bg-[#000000]" : "bg-[#557BA7]"}
+            <div className={`relative ${isDark? "bg-[#000000]" : "bg-[#DECEB3]"}
                 h-full w-full flex flex-col items-center justify-center overflow-hidden`}>
-                <video src={Dark} autoPlay muted loop className="h-inherit w-full object-cover transform cursor-pointer
-                    absolute top-1/2 -translate-y-1/2 brightness-80"></video>
-                <span className="z-3 w-full spacegrotesk text-[calc(0.8vw+1.2rem)] text-[var(--secondary-color)] font-semibold 
-                    absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center backdrop-blur-sm cursor-pointer">we bring logic to life through inspired innovation.</span>
+                <video src={Square} autoPlay muted loop className="h-inherit w-auto object-cover transform cursor-pointer
+                    absolute top-1/2 -translate-y-1/2 filter hue-rotate-[312deg] saturate-[0.3] brightness-[1.6]"></video>
+                <span className="z-3 w-full spacegrotesk p-[calc(0.4vw+0.6rem)] text-[calc(0.6vw+1rem)] text-[var(--light-color)] bg-[var(--secondary-color)] font-semibold 
+                    absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center cursor-pointer">we bring logic to life through inspired innovation.</span>
             </div>
 
         </div>

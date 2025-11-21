@@ -3,6 +3,7 @@ import Icon from "../assets/ui/banner.png"
 import Background from "../assets/vids/landing.mp4"
 import Theme from "../components/Theme";
 import Tagline from "../components/Tagline";
+import useIsMobile from "../hooks/useIsMobile";
 
 declare const gsap: any; 
 
@@ -13,6 +14,7 @@ type HeaderProps = {
 
 function Header({ isDark, setIsDark}: HeaderProps) {
 
+    const isMobile = useIsMobile();
     const videoRef = useRef<HTMLVideoElement>(null);
 
     const handleSkip = () => {
@@ -99,25 +101,43 @@ function Header({ isDark, setIsDark}: HeaderProps) {
           window.scrollTo({ top: sectionTop, behavior: "smooth" });
         }
     };  
+    const gotoGithub = () => {
+        const section = document.getElementById("footer");
+        if (!section) return;
+      
+        const headerHeight = window.innerHeight;
+      
+        if (window.ScrollSmoother) {
+          window.ScrollSmoother.scrollTo(section, {
+            offsetY: -headerHeight,
+            duration: 1.2,
+            ease: "power2.out"
+          });
+        } else {
+          const sectionTop = section.getBoundingClientRect().top + window.scrollY - headerHeight;
+          window.scrollTo({ top: sectionTop, behavior: "smooth" });
+        }
+    };  
       
     return (
         <div id="header" className={`fixed top-0 left-0 h-screen w-full flex flex-row items-start justify-center`}>
             <video ref={videoRef} autoPlay muted loop className="absolute top-1/2 left-1/2 w-full h-full object-cover -translate-x-1/2 -translate-y-1/2 filter brightness-100">
                 <source src={Background} type="video/mp4" />
             </video>
-            <div className="z-3 h-auto w-full flex flex-row items-center justify-start">
-                <div className="flex-1 z-2 flex flex-row items-center justify-start gap-[calc(0.4vw+0.6rem)] p-[calc(0.3vw+0.4rem)]">
+            <div className="z-3 h-auto w-full flex flex-row items-center justify-start py-[calc(0.3vw+0.4rem)]">
+                <div className="flex-1 z-2 flex flex-row items-center justify-start gap-[calc(0.4vw+0.6rem)]">
                     <img src={Icon} className="h-[calc(2.6vw+2.8rem)] w-[calc(6.4vw+6.6rem)] cursor-pointer" alt="" />
                 </div>
-                <div className="flex-1 z-2 flex flex-row items-center justify-center p-[calc(0.6vw+1.2rem)] gap-[calc(0.4vw+0.6rem)]">
+                {!isMobile && <div className="flex-1 z-2 flex flex-row items-center justify-center p-[calc(0.6vw+1.2rem)] gap-[calc(0.4vw+0.6rem)]">
                     <span title="Skip to About" className="hovered text-[calc(0.4vw+0.8rem)] font-semibold cursor-pointer"
                         onClick={gotoAbout}>About</span>
                     <span title="Skip to Work" className="hovered text-[calc(0.4vw+0.8rem)] font-semibold cursor-pointer"
                         onClick={gotoWork}>Work</span>
                     <span title="Skip to Services" className="hovered text-[calc(0.4vw+0.8rem)] font-semibold cursor-pointer"
                         onClick={gotoServices}>Services</span>
-                    <span title="Skip to Github" className="hovered text-[calc(0.4vw+0.8rem)] font-semibold cursor-pointer">Github</span>
-                </div>
+                    <span title="Skip to Github" className="hovered text-[calc(0.4vw+0.8rem)] font-semibold cursor-pointer"
+                        onClick={gotoGithub}>Github</span>
+                </div>}
                 <div className="flex-1 z-2 flex flex-row items-center justify-end p-[calc(0.4vw+0.6rem)]">
                     <span className="px-[calc(0.4vw+0.6rem)] py-[calc(0.3vw+0.4rem)] 
                         text-[calc(0.4vw+0.6rem)] text-[var(--light-color)] bg-[var(--dark-color)] cursor-pointer font-semibold 

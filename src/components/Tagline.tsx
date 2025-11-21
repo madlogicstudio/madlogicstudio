@@ -2,9 +2,11 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import Icon from "../assets/ui/logo-light.png"
+import useIsMobile from "../hooks/useIsMobile";
 
 function Tagline() {
 
+    const isMobile = useIsMobile();
     gsap.registerPlugin(SplitText);
 
     const whereRef = useRef<HTMLHeadingElement>(null);
@@ -213,15 +215,18 @@ function Tagline() {
 
     return (     
         <div className="overflow-hidden absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-1 flex items-center justify-center w-full h-full">
-            <div className="relative w-auto w-auto flex flex-row items-center justify-center z-2">
+            <div className={`${isMobile? "flex-col" : "flex-row"}
+                relative w-auto w-auto flex items-center justify-center z-2`}>
                 <span ref={whereRef} className="flex flex-row items-center justify-end montserrat font-bold px-[calc(0.4vw+0.6rem)] py-[calc(0.3vw+0.4rem)]
                     text-[calc(1.6vw+2rem)] text-center cursor-pointer"
                     onMouseOver={goDown}
                     onMouseLeave={doNothing}>Where</span>
-                <span ref={logicRef} className="flex flex-row items-center justify-end spacegrotesk font-[900] p-[calc(0.4vw+0.6rem)]
+                {!isMobile && <span ref={logicRef} className="flex flex-row items-center justify-end spacegrotesk font-[900] p-[calc(0.4vw+0.6rem)]
                     text-[calc(1.8vw+2.4rem)] text-center cursor-pointer"
                     onMouseEnter={showIcon}
-                    onMouseLeave={hideIcon}>Logic</span>
+                    onMouseLeave={hideIcon}>Logic</span>}
+                {isMobile && <span ref={logicRef} className="flex flex-row items-center justify-end spacegrotesk font-[900] p-[calc(0.4vw+0.6rem)]
+                    text-[calc(1.8vw+2.4rem)] text-center cursor-pointer">Logic</span>}
                 <img 
                     ref={logicImgRef} 
                     src={Icon}
