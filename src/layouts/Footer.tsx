@@ -29,7 +29,7 @@ function Footer({ isDark }: FooterProps) {
 
     return (
         <div id="footer" className={`${isDark? "bg-[var(--dark-color)] text-[var(--light-color)]" : "bg-[var(--light-color)] bg-[var(--dark-color)]"}
-            ${isMobile? "pt-[calc(0.4vw+0.6rem)] h-screen" : "h-screen"}
+            ${isMobile? "pt-[calc(0.4vw+0.6rem)] h-auto" : "h-screen"}
             relative overflow-hidden w-full flex flex-col items-center justify-center gap-[calc(0.4vw+0.6rem)]`}>
             <div className="h-full w-full flex flex-col items-start justify-start">
                 <div className={`${isMobile? "py-[calc(1.4vw+1.6rem)]" : ""}
@@ -82,7 +82,7 @@ function Footer({ isDark }: FooterProps) {
                             </div>
                         </div>
                         <div className={`${isMobile? "text-[calc(0.6vw+0.8rem)]" : "text-[calc(0.8vw+0.4rem)]"}
-                            w-full flex flex-row items-center justify-between`}>
+                            w-full flex flex-row items-center justify-between mb-1`}>
                             <span className="cursor-pointer primary">© Mad Logic Studio. All rights reserved.</span>
                             <i className='bx bx-chevron-up-square bx-spin-hover text-[calc(1vw+1.6rem)] cursor-pointer primary'
                                 onClick={scrollToTop}></i> 
